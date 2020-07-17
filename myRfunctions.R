@@ -1,4 +1,8 @@
 
+huhuhaa <- function(x){
+  print("schnullibuh")
+}
+
 normtrunc <- function(x,m,sd,lower,upper, tol=1000000, progb = FALSE){
   v <- rnorm(x,m,sd)
   c <- 1
