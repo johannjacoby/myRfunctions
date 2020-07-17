@@ -1,9 +1,4 @@
-print("xxxxxxxxxx")
-
-
-huhuhaa <- function(x){
-  print("schnullibuh")
-}
+print("------------------ Johanns R functions loaded. -------------------------")
 
 normtrunc <- function(x,m,sd,lower,upper, tol=1000000, progb = FALSE){
   v <- rnorm(x,m,sd)
