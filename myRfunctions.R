@@ -30,7 +30,7 @@ breakText <- function(x, breakP=80){
       if (nchar(memory) + nchar(i) < breakP) { ret <- paste0(ret,ifelse(ret=="",""," "),i); memory <- paste0(memory," ",i) }
       else {ret <- paste0(ret, "\n",i); memory <- i}
     }
-    rett <- paste0(rett, gsub("  "," ",gsub("___t___","\t",ret)))
+    rett <- paste0(rett, "\n",gsub("  "," ",gsub("___t___","\t",ret)))
   }
   rett
 }
