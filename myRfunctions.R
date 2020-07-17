@@ -35,5 +35,3 @@ breakText <- function(x, breakP=80){
   rett
 }
 
-
-cat(breakText("huhu hafags jhgash db\n hdgfhgdhj dkhagsj ads", breakP=20))
