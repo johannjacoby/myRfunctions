@@ -23,7 +23,6 @@ breakTextSPSSProduction<- function(x, breakP=80, chunks="\\.\\n\\n"){
     xx<-gsub("\\n ",lb,p)
     xx<-gsub("\\n",lb,p)
     parts <- strsplit(gsub(" +"," ",xx), split=" ")[[1]]
-    print(parts)
     ret <- ""
     memory <- ""
     for (ii in parts){
