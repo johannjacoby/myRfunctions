@@ -15,10 +15,9 @@ normtrunc <- function(x,m,sd,lower,upper, tol=1000000, progb = FALSE){
 }
 
 
-
-breakText <- function(x, breakP=80){
+breakText <- function(x, breakP=80, chunks=c("\\n")){
   rett <- ""
-  parags <- gsub("^ | $","",strsplit(x,split="\n")[[1]])
+  parags <- gsub("^ | $","",strsplit(x,split=paste0(chunks, collapse="|"))[[1]])
   
   for (p in parags){
     xx<-p
@@ -28,10 +27,9 @@ breakText <- function(x, breakP=80){
     memory <- ""
     for (i in parts){
       if (nchar(memory) + nchar(i) < breakP) { ret <- paste0(ret,ifelse(ret=="",""," "),i); memory <- paste0(memory," ",i) }
-      else {ret <- paste0(ret, "\n",i); memory <- i}
+      else {ret <- paste0(ret, "\n ",i); memory <- i}
     }
     rett <- paste0(rett, "\n",gsub("  "," ",gsub("___t___","\t",ret)))
   }
   rett
 }
-
