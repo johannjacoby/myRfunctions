@@ -14,21 +14,24 @@ normtrunc <- function(x,m,sd,lower,upper, tol=1000000, progb = FALSE){
   rl
 }
 
-
-breakTextSPSSProduction<- function(x, breakP=80, chunks="\\.\\n\\n"){
+breakTextSPSSProduction<- function(x, breakP=80, chunks="\\.\\n"){
   lb <- "_x_x_x_x_"
   parags <- gsub("^ +| +$","",strsplit(x,split=chunks)[[1]])
   retv <- c()
   for (p in parags){
-    xx<-gsub("\\n ",lb,p)
-    xx<-gsub("\\n",lb,p)
+    print(p)
+    xx<-p
+    xx<-gsub("^\\n+","",xx)
+    xx<-gsub("\\n ",lb,xx)
+    xx<-gsub("\\n",lb,xx)
+    print(xx)
     parts <- strsplit(gsub(" +"," ",xx), split=" ")[[1]]
     ret <- ""
     memory <- ""
     for (ii in parts){
       #i <- gsub("^ +| +$","",ii)
       i <- ii
-      if (nchar(memory) + nchar(i) + 1 < breakP-1) { ret <- paste0(ret,ifelse(ret=="" | substr(i, 1,1)==" ",""," "),i); memory <- paste0(memory, " ",i) }
+      if (nchar(memory) + nchar(i) + 1 < breakP-1) { ret <- paste0(ret,ifelse(ret=="" | substr(i,1,1)==" ",""," "),i); memory <- paste0(memory,ifelse(ret=="",""," "),i) }
       else {
         if (lengths(regmatches(memory, gregexpr("\\'|\"",memory)))%%2>0){ret <- paste0(ret, " +")}
         ret <- paste0(ret, "\n ", i)
@@ -37,7 +40,8 @@ breakTextSPSSProduction<- function(x, breakP=80, chunks="\\.\\n\\n"){
       if (grepl(lb,i)) {memory <- tail(strsplit(i,split=lb)[[1]],1)}
     }
     retv <- c(retv, paste0("\n",gsub(lb,"\n ",ret)))
-  }
-  returnt <- gsub("\\n\\n\\n","\n\n",paste0(retv, collapse=gsub("\\\\","",gsub("\\\\n","\n",chunks))))
+  } 
+  returnt <- gsub("\\n\\n\\n","\n\n",paste0(retv, collapse="."))
   returnt
 }
+
