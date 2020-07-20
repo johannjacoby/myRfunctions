@@ -1,4 +1,4 @@
-print("------------------ Johanns R functions loaded. -------------------------")
+cat("------------------ Johanns R functions loaded -------------------------\n")
 cat("+++++++++++++++++++++++++2020072011+++++++++++++++++++++++++\n")
 
 normtrunc <- function(x,m,sd,lower,upper, tol=1000000, progb = FALSE){
