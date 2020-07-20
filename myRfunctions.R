@@ -30,7 +30,7 @@ breakTextSPSSProduction<- function(x, breakP=80, chunks="\\.\\n"){
     for (ii in parts){
       #i <- gsub("^ +| +$","",ii)
       i <- ii
-      if (nchar(memory) + nchar(i) + 1 < breakP-1) { ret <- paste0(ret,ifelse(ret=="" | substr(i,1,1)==" ",""," "),i); memory <- paste0(memory,ifelse(ret=="",""," "),i) }
+      if (nchar(memory) + nchar(i) + 1 < breakP-1) { ret <- paste0(ret,ifelse(ret=="" | substr(i,1,1)==" ","","\t"),i); memory <- paste0(memory,ifelse(ret=="",""," "),i) }
       else {
         if (lengths(regmatches(memory, gregexpr("\\'|\"",memory)))%%2>0){ret <- paste0(ret, " +")}
         ret <- paste0(ret, "\n ", i)
