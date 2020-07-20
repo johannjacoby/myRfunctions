@@ -1,4 +1,5 @@
 print("------------------ Johanns R functions loaded. -------------------------")
+cat("+++++++++++++++++++++++++2020072011+++++++++++++++++++++++++\n")
 
 normtrunc <- function(x,m,sd,lower,upper, tol=1000000, progb = FALSE){
   v <- rnorm(x,m,sd)
@@ -15,7 +16,6 @@ normtrunc <- function(x,m,sd,lower,upper, tol=1000000, progb = FALSE){
 }
 
 breakTextSPSSProduction<- function(x, breakP=80, chunks="\\.\\n"){
-  cat("+++++++++++++++++++++++++2020072011+++++++++++++++++++++++++\n")
   lb <- "_x_x_x_x_"
   parags <- gsub("^ +| +$","",strsplit(x,split=chunks)[[1]])
   retv <- c()
