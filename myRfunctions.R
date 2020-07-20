@@ -20,7 +20,6 @@ breakTextSPSSProduction<- function(x, breakP=80, chunks="\\.\\n"){
   parags <- gsub("^ +| +$","",strsplit(x,split=chunks)[[1]])
   retv <- c()
   for (p in parags){
-    print(p)
     xx<-p
     xx<-gsub("^\\n+","",xx)
     xx<-gsub("\\n ",lb,xx)
